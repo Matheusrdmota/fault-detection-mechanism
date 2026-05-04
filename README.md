@@ -69,6 +69,17 @@ python -m src.main
 ---
 
 
+## Results
+
+The results are available in the results dirctory. The two spreadsheets available contains
+all the experiments information. Additionaly, the Python notebook with the data analysis used in the
+paper.
+
+To execute the analysis, the user must to run the notebook having the spreadsheets in the same directory.
+
+---
+
+
 ## 🛠️ Technologies
 
 * Python

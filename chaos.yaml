@@ -1,0 +1,18 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: memory-chaos-11569
+spec:
+  duration: 120s
+  mode: all
+  selector:
+    namespaces:
+    - sock-shop
+    pods:
+      sock-shop:
+      - carts-f4f6c98b9-r5wxx
+      - payment-56bcfc857f-5kcpp
+  stressors:
+    memory:
+      size: 350MB
+      workers: 1

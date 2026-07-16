@@ -2,6 +2,9 @@ import src.config.kubernetes.k8s_config as k8s_config
 import src.external.prometheus.prometheus_client as prom_cli
 from sklearn.ensemble import IsolationForest
 from sklearn.linear_model import LinearRegression
+import numpy as np
+from sklearn.svm import OneClassSVM
+from sklearn.preprocessing import StandardScaler
 
 def run_isolation_forest(resource, duration):
     df_if = prom_cli.query_prometheus("iforest", resource, duration)
@@ -26,7 +29,12 @@ def run_isolation_forest(resource, duration):
 def run_linear_regression(resource, duration):
     df_reg = prom_cli.query_prometheus("regression", resource, duration)
 
-    df_reg = df_reg[~df_reg["pod"].str.contains("unknown|kube|chaos|prometheus|istio", case=False)]
+    df_reg = df_reg[
+        ~df_reg["pod"].str.contains(
+            "unknown|kube|chaos|prometheus|istio",
+            case=False
+        )
+    ]
     df_reg = df_reg.set_index(["pod", "timestamp"]).sort_index()
 
     slopes = {}
@@ -38,20 +46,29 @@ def run_linear_regression(resource, duration):
         if len(pod_df) < 5:
             continue
 
-        time_seconds = pod_df.index.astype("int64") // 10**9
-        time_seconds = time_seconds - time_seconds.min()
+        x = pod_df.index.astype("int64") // 10**9
+        x = (x - x.min()).astype(float)
 
-        X = time_seconds.values.reshape(-1, 1)
-        y = pod_df["value"].values
+        y = pod_df["value"].astype(float).values
 
-        model = LinearRegression()
-        model.fit(X, y)
+        n = len(x)
 
-        slope = model.coef_[0]
+        sum_x = np.sum(x)
+        sum_y = np.sum(y)
+        sum_xy = np.sum(x * y)
+        sum_x2 = np.sum(x ** 2)
+
+        denominator = n * sum_x2 - (sum_x ** 2)
+
+        if denominator == 0:
+            continue
+
+        slope = (n * sum_xy - sum_x * sum_y) / denominator
+
         slopes[pod] = slope
 
     print(slopes)
-    
+
     return slopes
 
 def detect(resource, duration):

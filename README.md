@@ -10,6 +10,28 @@ The project implements a fault detection mechanism for microservices using unsup
 
 The repository provides access to the implementation, experimental results, and data analysis notebook associated with the study. These artifacts are intended to support the inspection of the implementation, the examination of the experimental data, and the analysis of the results reported in the paper.
 
+## Related Publication
+
+This artifact is associated with the following research paper:
+
+**Title:** Towards an Unsupervised Fault Detection Mechanism in Microservices
+
+**Authors:**
+- Matheus Rodrigues Mota (UFC, Brazil)
+- Valéria Lelli (UFC, Brazil)
+- Ismayle Santos (UECE, Brazil)
+- Francisco Silva (UFC, Brazil)
+
+**Venue:** Brazilian Symposium on Software Quality (SBQS 2026).
+
+**Publication Status:** Accepted for publication.
+
+**DOI:** Not yet available.
+
+The paper has been accepted for publication at SBQS 2026.
+The DOI and publication link will be added once the
+official proceedings become available.
+
 ## Project Structure
 
 ```text
@@ -20,12 +42,13 @@ The repository provides access to the implementation, experimental results, and 
 │   ├── detector/
 │   └── external/
 ├── results/
-│   ├── cpu_experimental_results_svm.csv
-│   ├── cpu_experimental_results.csv
-│   ├── memory_leak_experimental_results_svm.csv
-│   ├── memory_leak_experimental_results.csv
-│   └── data_analysis.ipynb
+│   ├── cpu_experiments_results_svm.csv
+│   ├── cpu_experiments_results.csv
+│   ├── memory_leak_experiments_results_svm.csv
+│   ├── memory_leak_experiments_results.csv
+│   └── fault_detector_analysis.ipynb
 ├── requirements.txt
+├── chaos.yaml
 ├── README.md
 └── .gitignore
 ```
@@ -56,7 +79,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/Matheusrdmota/fault-detection-mechanism.git
-cd <repository>
+cd fault-detection-mechanism
 ```
 
 Create and activate a virtual environment.
@@ -136,18 +159,59 @@ The exact library versions and dependencies are documented in `requirements.txt`
 
 ## Artifact Availability
 
-The source code, experimental spreadsheets, and data analysis notebook are publicly available through this repository.
+The source code, experimental datasets, and data analysis
+notebook associated with this research are publicly available
+in Zenodo.
 
-The artifacts are archived in Zenodo and can be identified using the following DOI:
+**Version-specific DOI (Version 2.0):**
+https://doi.org/10.5281/zenodo.23382496
 
-**DOI:** [10.5281/zenodo.23382272](https://doi.org/10.5281/zenodo.23382272)
+**Concept DOI:**
+https://doi.org/10.5281/zenodo.23382272
 
-The repository provides the materials needed to inspect the implementation and experimental data and to examine the data analysis associated with the study.
+The version-specific DOI identifies the exact artifact
+version associated with the accepted research paper.
 
 ## Citation
 
-If you use or refer to these artifacts, please cite the associated research paper and the archived artifact record.
+If you use this artifact or its experimental results
+in your research, please cite the associated paper
+and the research artifact.
 
-The artifact record is available at:
+**Research Paper**
 
-https://doi.org/10.5281/zenodo.23382272
+Matheus Rodrigues Mota, Valéria Lelli, Ismayle Santos,
+and Francisco Silva. "Towards an Unsupervised Fault
+Detection Mechanism in Microservices." Accepted for
+publication at the Brazilian Symposium on Software
+Quality (SBQS 2026).
+
+**Research Artifact**
+
+Matheus Rodrigues Mota, Valéria Lelli, Ismayle Santos,
+and Francisco Silva. "Towards an Unsupervised Fault
+Detection Mechanism in Microservices: Research Artifact."
+Zenodo, version 2.0.
+
+https://doi.org/10.5281/zenodo.23382496
+
+## License
+
+This artifact is distributed under different licenses
+according to its components:
+
+- **Source Code:** The source code and fault injection
+  scripts are licensed under the MIT License.
+  See the `LICENSE` file.
+
+- **Experimental Data:** The experimental datasets,
+  including CSV files, are licensed under the Creative
+  Commons Attribution 4.0 International License (CC BY 4.0).
+  See the `LICENSE-DATA` file.
+
+- **Data Analysis Notebook:** Licensed under the
+  Creative Commons Attribution 4.0 International License
+  (CC BY 4.0).
+
+Copyright (c) 2026 Matheus Rodrigues Mota,
+Valéria Lelli, Ismayle Santos, and Francisco Silva.

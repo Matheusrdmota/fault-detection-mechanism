@@ -44,10 +44,15 @@ official proceedings become available.
 ├── results/
 │   ├── cpu_experiments_results_svm.csv
 │   ├── cpu_experiments_results.csv
+│   ├── cpu_experiments_results_cloud.csv
 │   ├── memory_leak_experiments_results_svm.csv
 │   ├── memory_leak_experiments_results.csv
+│   ├── memory_leak_experiments_results_cloud.csv
 │   ├── long_response_time_results.csv
+│   ├── long_response_time_results_cloud.csv
 │   ├── network_fault_detection_results.csv
+│   ├── network_delay_results_cloud.csv
+│   ├── network_packet_loss_results_cloud.csv
 │   └── fault_detector_analysis.ipynb
 ├── requirements.txt
 ├── chaos.yaml
